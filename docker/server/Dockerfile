@@ -28,8 +28,13 @@ RUN cd -- \
 
 RUN apt-get -y install redis-tools
 
+RUN apt-get update && \
+    apt-get install -y supervisor && \
+    mkdir -p /var/log/supervisor
+
 RUN chown -R www-data:www-data /var/www/html
 
+COPY ./config/horizon.conf /etc/supervisor/conf.d/horizon.conf
 COPY ./mods-available/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint
 RUN chmod +x /usr/local/bin/docker-entrypoint

@@ -34,4 +34,6 @@ php artisan db:seed
 
 chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
+service supervisor start
+
 exec docker-php-entrypoint apache2-foreground
