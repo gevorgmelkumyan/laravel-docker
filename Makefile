@@ -17,7 +17,7 @@ down:
 	docker compose -f docker/docker-compose.yml down -v --rmi=all --remove-orphans
 
 server:
-	docker compose -f docker/docker-compose.yml exec server bash
+	docker exec -it ld_server bash
 
 vite:
-	docker compose -f docker/docker-compose.yml exec vite bash
+	docker exec -it ld_vite bash
