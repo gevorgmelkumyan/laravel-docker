@@ -79,3 +79,13 @@ services:
             - ${SMTP_GUI_PORT}:1080
         networks:
             - net
+    s3mock:
+        image: adobe/s3mock
+        container_name: ld_s3
+        networks:
+            - net
+        environment:
+            - initialBuckets=laravel_docker
+            - debug=true
+        ports:
+            - ${S3_PORT}:9090
